@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -22,5 +23,54 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Outfit", sans-serif;
+}
+
+
+@keyframes gradient-move {
+  0% {
+    transform: translate(-50%, -50%) scale(1) rotate(0deg);
+  }
+  33% {
+    transform: translate(-45%, -55%) scale(1.1) rotate(120deg);
+  }
+  66% {
+    transform: translate(-55%, -45%) scale(0.95) rotate(240deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1) rotate(360deg);
+  }
+}
+
+.animated-gradient {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 40%, #A31621 0%, #ff6b7a 25%, #ffb3ba 50%, #ffd4d8 75%, transparent 100%);
+  filter: blur(40px);
+  opacity: 0.7;
+  animation: gradient-move 20s ease-in-out infinite;
+}
+ /* #A50104 25%,  */
+
+
+.glass-layer {
+  backdrop-filter: blur(80px) saturate(120%);
+  background: rgba(255, 255, 255, 0.3);
+  pointer-events: none;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #FFF !important; /* DocuHealth purple */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;     /* Firefox */
 }
