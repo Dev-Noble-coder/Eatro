@@ -77,7 +77,7 @@ const Meal = () => {
                 {quantity === 0 ? (
                   <button
                     onClick={() => addToCart(meal)}
-                    className="flex items-center justify-center gap-2 px-3 py-1 rounded-full bg-green-600 hover:bg-green-700 text-white text-xs transition w-full"
+                    className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white text-xs transition w-full "
                   >
                     <PlusCircle className="w-4 h-4" /> Add to Cart
                   </button>
