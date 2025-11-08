@@ -57,8 +57,8 @@ const Specials = () => {
         {foods.map((food, index) => (
         <SwiperSlide key={index}>
         <div className="flex flex-col items-center justify-center text-center">
-            <GlassBG className="w-20 h-20 rounded-full flex items-center justify-center">
-          <div className="w-12 h-12 relative mb-2 ">
+            <GlassBG className="w-16 h-16 rounded-full flex items-center justify-center">
+          <div className="w-10 h-10 relative mb-2 ">
             <Image
               src={food.image}
               alt={food.name}
