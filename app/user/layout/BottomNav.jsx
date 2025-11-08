@@ -15,7 +15,7 @@ export default function BottomNav() {
     ];
 
     return (
-        <nav className="fixed bottom-5 left-1/2 transform -translate-x-1/2  z-50 ">
+        <nav className="fixed bottom-5 left-1/2 transform -translate-x-1/2  z-40 ">
             <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20" >
 
                 <div className="flex items-center  px-1">

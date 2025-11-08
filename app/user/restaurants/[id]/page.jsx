@@ -93,7 +93,7 @@ const page = async ({ params }) => {
       <SearchInput />
       <Specials />
       <Filter />
-      <Meal />
+      <Meal restaurantName={restaurant.name} />
    </AppLayout>
    </>
   )
