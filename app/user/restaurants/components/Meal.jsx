@@ -106,7 +106,7 @@ const Meal = () => {
 
       {/* Bottom Cart Overlay */}
       {cart.length > 0 && (
-        <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-600/20 backdrop-blur-2xl text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-between w-[90%] sm:w-[400px]">
+        <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-600/20 backdrop-blur-2xl text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-between w-[86%] ">
           <span className="font-semibold text-sm">
             Total: ₦{total.toLocaleString()}
           </span>
