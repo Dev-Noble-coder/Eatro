@@ -113,7 +113,7 @@ const RestaurantCard = () => {
                 </div>
               </div>
             </div>
-            <ChevronRight  className="text-white pr-2"/>
+            <ChevronRight size={27} className="text-white pr-2"/>
           </GlassBG>
           </Link>
         ))}

@@ -59,7 +59,7 @@ const Settings = () => {
               {item.icon}
               <span className="text-gray-800 font-medium">{item.title}</span>
             </div>
-            <ChevronRight size={20} className="text-gray-600" />
+            <ChevronRight size={18}  className="text-gray-600 " />
           </GlassBG>
         ))}
       </div>
