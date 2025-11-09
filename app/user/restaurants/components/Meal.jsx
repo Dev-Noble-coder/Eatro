@@ -256,7 +256,7 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Delivery Address Section */}
-          <div className="p-5 space-y-5 my-2">
+          <div className="p-5 space-y-5 ">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <Home className="w-5 h-5 text-green-700" /> Delivery Address
             </h2>
@@ -292,7 +292,7 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Pickup Option */}
-          <div className="px-5 space-y-3 my-5">
+          <div className="px-5 space-y-3 mb-6">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <Truck className="w-5 h-5 text-green-700" /> Pickup Option
             </h2>
@@ -326,7 +326,7 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Promo Code */}
-          <div className="px-5 my-5">
+          <div className="px-5 mb-6">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <Gift className="w-5 h-5 text-green-700" /> Promo Code (Optional)
             </h2>
@@ -341,7 +341,7 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Agent Tip */}
-          <div className="px-5 mt-6 space-y-3">
+          <div className="px-5 mb-6 space-y-3">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <HandCoins className="w-5 h-5 text-green-700" /> Agent Tip
             </h2>
@@ -362,7 +362,7 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Summary */}
-          <div className="px-5 mt-10 pb-24 space-y-2">
+          <div className="px-5 mt-[10%] pb-24 space-y-2">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <ClipboardList className="w-5 h-5 text-green-700" /> Order Summary
             </h2>
