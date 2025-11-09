@@ -42,7 +42,7 @@ const pendingOrders = [
     id: 5,
     name: "Pounded Yam & Egusi",
     image:
-      "https://images.unsplash.com/photo-1565958011705-44e211f3e4c6?w=800&q=80",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRvJm3oF0NEj2-3iQUvoStknLqRXZL3AclnzgOFGPLzO4pFnLKsOqjTFQe7Iw8ZmxRb7EI&usqp=CAU",
     quantity: "2 plates",
     price: "₦3,000",
   },
@@ -50,7 +50,7 @@ const pendingOrders = [
     id: 6,
     name: "Beans & Plantain",
     image:
-      "https://images.unsplash.com/photo-1601050690597-df3c9b66c9f0?w=800&q=80",
+      "https://media.istockphoto.com/id/1198712283/photo/chile.webp?a=1&b=1&s=612x612&w=0&k=20&c=YunbqqErACUq3_jlV0xDsfTz2IrAZ5S3AUTFUfPvRFA=",
     quantity: "1 plate",
     price: "₦1,500",
   },
@@ -101,7 +101,7 @@ const completedOrders = [
     id: 6,
     name: "Yam & Egg Sauce",
     image:
-      "https://images.unsplash.com/photo-1589308078059-be1415eab4c3?w=800&q=80",
+      "https://media.istockphoto.com/id/1198712283/photo/chile.webp?a=1&b=1&s=612x612&w=0&k=20&c=YunbqqErACUq3_jlV0xDsfTz2IrAZ5S3AUTFUfPvRFA=",
     quantity: "1 plate",
     price: "₦1,800",
   },
@@ -111,13 +111,13 @@ const TopOrders = () => {
   return (
     <>
       {/* Pending Orders */}
-      <div className="px-5 mt-10">
+      <div className="px-5 mt-10 ">
         <h1 className="text-2xl text-[#A31621] font-medium mb-6">
           Pending Orders
         </h1>
 
         {pendingOrders.slice(0, 3).map((order) => (
-          <Link key={order.id} href={`/user/orders/${order.id}`}>
+          <Link key={order.id} href={`/restaurant/orders/pending/${order.id}`}>
             <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
               <img
                 src={order.image}
@@ -152,7 +152,7 @@ const TopOrders = () => {
         </h1>
 
         {completedOrders.slice(0, 3).map((order) => (
-          <Link key={order.id} href={`/user/orders/${order.id}`}>
+          <Link key={order.id} href={`/restaurant/orders/completed/${order.id}`}>
             <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
               <img
                 src={order.image}

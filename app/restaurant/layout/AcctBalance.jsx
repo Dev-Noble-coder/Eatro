@@ -29,7 +29,7 @@ const AcctBalance = () => {
         </div>
         <p className="text-3xl font-semibold font-outfit mt-1 text-[#A31621]">{hidden ? '•••••••' : `${formatWithCommas(Number(balance))}`}</p>
         <div className="my-3 h-px bg-white/10" />
-        <div className="mt-2 grid grid-cols-2 gap-3 text-xs text-white/70 font-outfit items-start">
+        <div className="mt-2 grid grid-cols-2 gap-3 text-sm text-white/70 font-outfit items-start">
           <div className="pr-2 border-r border-white/10">
             <p>Tips + subscriptions</p>
             <p className="text-white mt-1">{hidden ? '••••' : '₦45,200'} this week</p>
