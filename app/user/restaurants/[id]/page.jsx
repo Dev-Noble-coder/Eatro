@@ -78,7 +78,7 @@ const page = async ({ params }) => {
   return (
    <>
    <AppLayout>
-      <Hero bgImage={restaurant.bgImage}>
+      <Hero bgImage={restaurant.bgImage} route='/user/home_dashboard'>
         <div className='py-14 px-5 text-white'>
           <h2 className='text-3xl font-semibold mb-3 '>
             {restaurant.name}     

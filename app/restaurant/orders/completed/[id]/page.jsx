@@ -1,5 +1,7 @@
 import React from 'react'
 import AppLayout from '@/app/restaurant/layout/AppLayout'
+import Hero from '@/app/user/restaurants/components/Hero'
+import GlassBG from '@/app/restaurant/layout/GlassBG'
 
 const page = async({params}) => {
 
