@@ -81,7 +81,7 @@ const page = async({ params }) => {
                 <div className='ml-5 mt-5 mb-3'>
                     <h2 className='text-xl font-semibold text-gray-900'>Order Details</h2>
                 </div>
-                <GlassBG className='transition mb-2 rounded-md mx-5 p-5 space-y-2'>
+                <GlassBG className='transition mb-24 rounded-md mx-5 p-5 space-y-2 '>
                    
                     <div className='mb-5'>
                         <p><span className='text-[#A31621]'>Food Ordered : </span> </p>
@@ -93,6 +93,7 @@ const page = async({ params }) => {
                     <p><span className='text-[#A31621]'>Buyer's ID : </span> ETR4060 </p>
                     <p><span className='text-[#A31621]'>PickUp Agent : </span> Salami Lauo </p>
                     <p><span className='text-[#A31621]'>PickUp Agent's ID : </span> ETRA4060 </p>
+                    <p>Status :<span className='text-[#A31621]'> Pending</span></p>
                 </GlassBG>
 
             </AppLayout>

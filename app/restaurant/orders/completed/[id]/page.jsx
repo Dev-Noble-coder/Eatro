@@ -2,6 +2,7 @@ import React from 'react'
 import AppLayout from '@/app/restaurant/layout/AppLayout'
 import Hero from '@/app/user/restaurants/components/Hero'
 import GlassBG from '@/app/restaurant/layout/GlassBG'
+import FoodSwiper from '../../components/FoodSwiper'
 
 const page = async({params}) => {
 
@@ -67,8 +68,31 @@ const page = async({params}) => {
   return (
     <>
     <AppLayout>
-        <p>{completedOrder.name}</p>
-    </AppLayout>
+                <Hero bgImage={completedOrder.image} route='/restaurant/orders'>
+                    <div className='py-14 px-5 text-white'>
+                        <h2 className='text-3xl font-semibold mb-3'>Completed Order ({completedOrder.id})</h2>
+
+                    </div>
+                </Hero>
+                <div className='ml-5 mt-5 mb-3'>
+                    <h2 className='text-xl font-semibold text-gray-900'>Order Details</h2>
+                </div>
+                <GlassBG className='transition mb-24 rounded-md mx-5 p-5 space-y-2 '>
+                   
+                    <div className='mb-5'>
+                        <p><span className='text-[#A31621]'>Food Ordered : </span> </p>
+                        <FoodSwiper />
+                    </div>
+                    <p><span className='text-[#A31621]'>Buyer's Name : </span> Isaac Bami</p>
+                    <p><span className='text-[#A31621]'>Total Amount : </span> {completedOrder.price}</p>
+                    <p><span className='text-[#A31621]'>Time Ordered : </span> 10 : 40 pm</p>
+                    <p><span className='text-[#A31621]'>Buyer's ID : </span> ETR4060 </p>
+                    <p><span className='text-[#A31621]'>PickUp Agent : </span> Salami Lauo </p>
+                    <p><span className='text-[#A31621]'>PickUp Agent's ID : </span> ETRA4060 </p>
+                    <p>Status :<span className='text-[#A31621]'> Completed</span></p>
+                </GlassBG>
+
+            </AppLayout>
 </>
   )
 }
