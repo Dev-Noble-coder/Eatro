@@ -41,6 +41,25 @@ const SignUp = () => {
     };
 
     const handleSubmit = async (e) => {
+      e.preventDefault();
+        try{
+            const res = await fetch('https://eatro-hlcb.onrender.com/api/auth/register', {
+              method : "POST",
+              headers : {
+                "Content-Type": "application/json",
+              },
+              body : JSON.stringify({
+                username : formData.name, email : formData.email, password : formData.password 
+              })
+            })
+            if (!res.ok) throw new Error("Failed to create user");
+
+            const data = await res.json();
+            console.log(data)
+          } catch (error) {
+            console.error("Error:", error);
+          }
+
 
     }
     return (

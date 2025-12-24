@@ -131,7 +131,7 @@ const TopOrders = () => {
                 <p className="text-white text-sm pb-3">
                   {order.quantity} • {order.price}
                 </p>
-                <p className="text-[10px] bg-yellow-300/40 rounded-full text-gray-800/70 w-fit px-2 py-0.5">
+                <p className="text-[10px] bg-yellow-100 rounded-full text-yellow-700 w-fit px-2 py-0.5">
                   Pending
                 </p>
               </div>
@@ -166,7 +166,7 @@ const TopOrders = () => {
                 <p className="text-white text-sm pb-3">
                   {order.quantity} • {order.price}
                 </p>
-                <p className="text-[10px] bg-green-300/40 rounded-full text-gray-800/70 w-fit px-2 py-0.5">
+                <p className="text-[10px] bg-green-100 rounded-full text-green-700 w-fit px-2 py-0.5">
                   Completed
                 </p>
               </div>

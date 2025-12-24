@@ -149,7 +149,7 @@ const OrdersTab = ({ activeTab, setActiveTab }) => {
       </h1>
 
       {data.map((order) => (
-        <Link key={order.id} href={`/restaurant/orders/${activeTab === "pending" ? 'pending' : 'completed'}/${order.id}`}>
+        <Link key={order.id} href={`/agent/orders/${activeTab === "pending" ? 'pending' : 'completed'}/${order.id}`}>
           <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
             <img
               src={order.image}

@@ -107,77 +107,80 @@ const completedOrders = [
   },
 ]
 
-const OrdersTab = ({ activeTab, setActiveTab }) => {
-  const data = activeTab === "pending" ? pendingOrders : completedOrders
-
+const TopOrders = () => {
   return (
-    <div className="px-5 mt-10 mb-26">
-      {/* Toggle Tabs */}
-      <div className="relative grid grid-cols-2 border-b border-gray-700/20 pb-0.5 mb-6">
-        {/* Buttons */}
-        <button
-          onClick={() => setActiveTab("pending")}
-          className={`pb-2 text-base font-medium transition-colors ${activeTab === "pending"
-              ? "text-[#A31621]"
-              : "text-gray-700/70 hover:text-[#A31621]"
-            }`}
-        >
+    <>
+      {/* Pending Orders */}
+      <div className="px-5 mt-10 ">
+        <h1 className="text-2xl text-[#A31621] font-medium mb-6">
           Pending Orders
-        </button>
+        </h1>
 
-        <button
-          onClick={() => setActiveTab("completed")}
-          className={`pb-2 text-base font-medium transition-colors ${activeTab === "completed"
-              ? "text-[#A31621]"
-              : "text-gray-700/70 hover:text-[#A31621]"
-            }`}
-        >
-          Completed Orders
-        </button>
+        {pendingOrders.slice(0, 3).map((order) => (
+          <Link key={order.id} href={`/agent/orders/pending/${order.id}`}>
+            <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
+              <img
+                src={order.image}
+                alt={order.name}
+                className="w-24 h-24 object-cover rounded-l-xl"
+              />
+              <div className="flex flex-col flex-1">
+                <h2 className="text-lg font-semibold text-[#A31621]">
+                  {order.name}
+                </h2>
+                <p className="text-white text-sm pb-3">
+                  {order.quantity} • {order.price}
+                </p>
+                <p className="text-[10px] bg-yellow-100 rounded-full text-yellow-700 w-fit px-2 py-0.5">
+                  Pending
+                </p>
+              </div>
+              <ChevronRight size={18} className="text-gray-600" />
+            </GlassBG>
+          </Link>
+        ))}
 
-        {/* Sliding underline */}
-        <span
-          className={`absolute bottom-0 left-0 w-1/2 h-[2px] bg-[#A31621] transition-transform duration-300 ease-in-out ${activeTab === "completed" ? "translate-x-full" : "translate-x-0"
-            }`}
-        />
+        <p className="text-center text-[#A31621] font-medium pt-3 underline cursor-pointer">
+          See More
+        </p>
       </div>
 
+      {/* Completed Orders */}
+      <div className="px-5 mt-10 mb-26">
+        <h1 className="text-2xl text-[#A31621] font-medium mb-6">
+          Completed Orders
+        </h1>
 
-      {/* Orders List */}
-      <h1 className="text-2xl text-[#A31621] font-medium mb-6">
-        {activeTab === "pending" ? "Pending Orders" : "Completed Orders"}
-      </h1>
+        {completedOrders.slice(0, 3).map((order) => (
+          <Link key={order.id} href={`/agent/orders/completed/${order.id}`}>
+            <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
+              <img
+                src={order.image}
+                alt={order.name}
+                className="w-24 h-24 object-cover rounded-l-xl"
+              />
+              <div className="flex flex-col flex-1">
+                <h2 className="text-lg font-semibold text-[#A31621]">
+                  {order.name}
+                </h2>
+                <p className="text-white text-sm pb-3">
+                  {order.quantity} • {order.price}
+                </p>
+                <p className="text-[10px] bg-green-100 rounded-full text-green-700 w-fit px-2 py-0.5">
+                  Completed
+                </p>
+              </div>
+              <ChevronRight size={18} className="text-gray-600" />
+            </GlassBG>
+          </Link>
+        ))}
 
-      {data.map((order) => (
-        <Link key={order.id} href={`/restaurant/orders/${activeTab === "pending" ? 'pending' : 'completed'}/${order.id}`}>
-          <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl pr-2">
-            <img
-              src={order.image}
-              alt={order.name}
-              className="w-24 h-24 object-cover rounded-l-xl"
-            />
-            <div className="flex flex-col flex-1">
-              <h2 className="text-lg font-semibold text-[#A31621]">
-                {order.name}
-              </h2>
-              <p className="text-white text-sm pb-3">
-                {order.quantity} • {order.price}
-              </p>
-              <p
-                className={`text-[10px] rounded-full w-fit px-2 py-0.5 ${activeTab === "pending"
-                    ? "bg-yellow-100 text-yellow-700"
-                    : "bg-green-100 text-green-700"
-                  }`}
-              >
-                {activeTab === "pending" ? "Pending" : "Completed"}
-              </p>
-            </div>
-            <ChevronRight size={18} className="text-gray-600" />
-          </GlassBG>
-        </Link>
-      ))}
-    </div>
+        <p className="text-center text-[#A31621] font-medium pt-3 underline cursor-pointer">
+          See More
+        </p>
+      </div>
+    </>
   )
 }
 
-export default OrdersTab
+export default TopOrders

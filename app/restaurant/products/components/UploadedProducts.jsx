@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react'
+import React, {useState} from 'react'
 import Image from 'next/image';
 import { PlusCircle, MinusCircle } from 'lucide-react';
 
@@ -17,6 +17,14 @@ const UploadedProducts = ({setProductModal, setSelectedProduct, setDeleteModal, 
         { id: 9, name: "Moi Moi", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQE3Ht9D0dqVlnDRvU7lMSEmEW1_Y79qqmqU70rxOdeqnyYeT8SkSR4Oz6OZYfzsYB9V4c&usqp=CAU", price: 900 },
         { id: 10, name: "Spaghetti", image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_d7U7azBd3LeDGooqwgaiZwK_NT20IrciB21AXbwCwORu641xipHgOaIUebwQJTlX_kw&usqp=CAU", price: 800 },
     ];
+
+    const [isAvailable, setIsAvailable] = useState(true);
+
+const toggleAvailability = () => {
+  setIsAvailable(prev => !prev);
+};
+
+
     return (
         <>
             <div className='mt-10 mb-5'>
@@ -42,6 +50,24 @@ const UploadedProducts = ({setProductModal, setSelectedProduct, setDeleteModal, 
                                     <p className="text-sm text-gray-600 mb-2">
                                         ₦{meal.price.toLocaleString()}
                                     </p>
+                                    <div className="flex items-center gap-2 mb-6">
+  <span className="text-xs text-gray-600">
+    {isAvailable ? "Available" : "Unavailable"}
+  </span>
+
+  <button
+    onClick={toggleAvailability}
+    className={`w-10 h-5 flex items-center rounded-full p-1 transition cursor-pointer
+      ${isAvailable ? "bg-green-600" : "bg-gray-400"}`}
+  >
+    <div
+      className={`w-3.5 h-3.5 bg-white rounded-full shadow transition
+        ${isAvailable ? "translate-x-5" : "translate-x-0"}`}
+    />
+  </button>
+</div>
+
+
 
                                     <div className='flex items-center gap-1'>
                                         <button

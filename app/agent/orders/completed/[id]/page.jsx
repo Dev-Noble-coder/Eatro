@@ -68,7 +68,7 @@ const page = async({params}) => {
   return (
     <>
   <AppLayout>
-  <Hero bgImage={completedOrder.image} route="/restaurant/orders">
+  <Hero bgImage={completedOrder.image} route="/agent/orders">
     <div className="py-16 px-5 text-white">
       <h2 className="text-3xl font-semibold">
         Completed Order
