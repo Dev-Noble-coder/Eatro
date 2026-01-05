@@ -544,7 +544,7 @@ const Meal = ({ restaurantName }) => {
               </button>
             </Link>
             <button
-              className="w-full bg-transparent text-gray-500 py-2 font-medium hover:text-gray-800 transition"
+              className="w-full bg-transparent text-gray-500 py-2 font-medium hover:text-gray-800 transition mt-3"
               onClick={() => {
                 setIsSuccess(false)
                 setShowCart(false)
