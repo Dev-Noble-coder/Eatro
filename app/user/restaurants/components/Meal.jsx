@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import {
   PlusCircle, MinusCircle, Trash2, X, ArrowLeft, User,
   Home,
@@ -18,6 +19,11 @@ import {
   Wallet,
   CreditCard,
 } from "lucide-react";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Autoplay, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/pagination";
 
 const meals = [
   { id: 1, name: "Jollof Rice", image: "https://plus.unsplash.com/premium_photo-1694141252774-c937d97641da?ixlib=rb-4.1.0&auto=format&fit=crop&q=60&w=600", price: 1500 },
@@ -38,6 +44,11 @@ const Meal = ({ restaurantName }) => {
   const [showCheckout, setShowCheckout] = useState(false)
   const [pickupOption, setPickupOption] = useState("self");
   const [selectedTip, setSelectedTip] = useState(0);
+
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const [selectedAgent, setSelectedAgent] = useState(null);
 
   useEffect(() => {
     if (showCart) {
@@ -83,6 +94,13 @@ const Meal = ({ restaurantName }) => {
   // Calculate tip amount and new total
   const tipAmount = (total * selectedTip) / 100;
   const finalTotal = total + tipAmount;
+
+  const agents = [
+    { id: 1, name: "Tunde", gender: "Male", online: true, image: "https://i.pravatar.cc/150?u=1" },
+    { id: 2, name: "Sarah", gender: "Female", online: true, image: "https://i.pravatar.cc/150?u=2" },
+    { id: 3, name: "Chidi", gender: "Male", online: false, image: "https://i.pravatar.cc/150?u=3" },
+    { id: 4, name: "Blessing", gender: "Female", online: true, image: "https://i.pravatar.cc/150?u=4" },
+  ];
 
 
   return (
@@ -292,12 +310,13 @@ const Meal = ({ restaurantName }) => {
           </div>
 
           {/* Pickup Option */}
+          {/* Pickup Option */}
           <div className="px-5 space-y-3 mb-6">
             <h2 className="font-medium text-gray-800 flex items-center gap-2">
               <Truck className="w-5 h-5 text-green-700" /> Pickup Option
             </h2>
 
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 mb-4">
               <label className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
                 <input
                   type="radio"
@@ -323,6 +342,57 @@ const Meal = ({ restaurantName }) => {
                 Agent Pick-up
               </label>
             </div>
+
+            {/* Agent Slideshow - Only shows if 'agent' is selected */}
+            {pickupOption === "agent" && (
+              <div className="bg-gray-50 rounded-2xl p-4 border border-green-100">
+                <p className="text-xs font-semibold text-green-700 mb-3 uppercase tracking-wider">Available Agents</p>
+                <Swiper
+                  modules={[Autoplay, Pagination]}
+                  spaceBetween={15}
+                  slidesPerView={2.5}
+                  autoplay={{ delay: 3000 }}
+                  loop={true}
+                  className="pb-6"
+                >
+                  {agents.map((agent) => (
+                    <SwiperSlide key={agent.id}>
+                      <div 
+                      onClick={() => agent.online && setSelectedAgent(prev => prev === agent.id ? null : agent.id)} // Only allow selecting online agents
+                      className={`flex flex-col items-center p-3 rounded-xl border-2 transition-all cursor-pointer relative my-3 ${
+                        selectedAgent === agent.id 
+                          ? "bg-green-50 border-green-600 shadow-md scale-105" 
+                          : "bg-white border-gray-100 hover:border-gray-300"
+                      } ${!agent.online && "opacity-60 cursor-not-allowed"}`}
+                      >
+                        {selectedAgent === agent.id && (
+      <div className="absolute -top-2 -right-2 bg-green-600 text-white rounded-full p-1 shadow-lg z-10">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-3 w-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+        </svg>
+      </div>
+    )}
+                        <div className="relative w-12 h-12 mb-2">
+                          <Image
+                            src={agent.image}
+                            alt={agent.name}
+                            fill
+                            className="rounded-full object-cover border-2 border-white shadow-sm"
+                          />
+                          {/* Online Status Indicator */}
+                          <div className={`absolute bottom-0 right-0 w-3 h-3 rounded-full border-2 border-white ${agent.online ? 'bg-green-500' : 'bg-gray-400'}`}></div>
+                        </div>
+                        <p className="text-[11px] font-bold text-gray-800 truncate w-full text-center">{agent.name}</p>
+                        <p className="text-[9px] text-gray-500">{agent.gender}</p>
+                        <p className={`text-[8px] mt-1 font-medium ${agent.online ? 'text-green-600' : 'text-gray-400'}`}>
+                          {agent.online ? 'Online' : 'Offline'}
+                        </p>
+                      </div>
+                    </SwiperSlide>
+                  ))}
+                </Swiper>
+              </div>
+            )}
           </div>
 
           {/* Promo Code */}
@@ -351,8 +421,8 @@ const Meal = ({ restaurantName }) => {
                   key={percent}
                   onClick={() => setSelectedTip(percent)}
                   className={`px-4 py-2 rounded-full border text-sm transition ${selectedTip === percent
-                      ? "bg-green-700 text-white border-green-700"
-                      : "border-gray-300 text-gray-700 hover:bg-green-100 hover:border-green-500"
+                    ? "bg-green-700 text-white border-green-700"
+                    : "border-gray-300 text-gray-700 hover:bg-green-100 hover:border-green-500"
                     }`}
                 >
                   {percent}%
@@ -383,13 +453,107 @@ const Meal = ({ restaurantName }) => {
 
           {/* Pay Button */}
           <div className="fixed bottom-0 left-0 right-0 bg-white p-4 border-t flex items-center justify-between w-full">
+          <button
+  className="bg-green-700 text-white px-6 py-3 rounded-full font-semibold transition w-full flex justify-center items-center gap-2 disabled:bg-gray-300 disabled:text-gray-500 disabled:cursor-not-allowed shadow-md active:scale-95"
+  disabled={isProcessing || (pickupOption === "agent" && !selectedAgent)}
+  onClick={() => {
+    setIsProcessing(true);
+    setTimeout(() => {
+      setIsProcessing(false);
+      setIsSuccess(true);
+    }, 2500);
+  }}
+>
+  {isProcessing ? (
+    // State 1: Processing
+    <>
+      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      Processing...
+    </>
+  ) : pickupOption === "agent" && !selectedAgent ? (
+    // State 2: Validation Warning
+    <>
+      <User className="w-5 h-5 opacity-70" /> 
+      Select an Agent to continue
+    </>
+  ) : (
+    // State 3: Ready to Pay
+    <>
+      <CreditCard className="w-5 h-5" /> 
+      Pay to Order
+    </>
+  )}
+</button>
+          </div>
+        </div>
+      )}
+      {isSuccess && (
+        <div className="fixed inset-0 z-50 bg-white flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-500">
+          {/* Success Animation Container */}
+          <div className="relative mb-8">
+            <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center animate-bounce">
+              <svg
+                className="w-12 h-12 text-green-600 stroke-current"
+                viewBox="0 0 24 24"
+                fill="none"
+                strokeWidth="3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path
+                  className="checkmark-path"
+                  d="M20 6L9 17l-5-5"
+                />
+              </svg>
+            </div>
+            {/* Decorative Circles */}
+            <div className="absolute -top-2 -right-2 w-6 h-6 bg-yellow-400 rounded-full animate-ping opacity-75"></div>
+            <div className="absolute -bottom-2 -left-2 w-4 h-4 bg-green-400 rounded-full animate-pulse"></div>
+          </div>
+
+          <h1 className="text-3xl font-bold text-gray-900 mb-2">Order Confirmed!</h1>
+          <p className="text-gray-600 mb-8 max-w-[280px]">
+            Your meal from <span className="font-semibold text-green-700">{restaurantName}</span> is being prepared.
+          </p>
+
+          {/* Order Details Card */}
+          <div className="w-full bg-gray-50 border border-gray-100 rounded-2xl p-5 mb-10 text-left">
+            <div className="flex justify-between mb-2">
+              <span className="text-gray-500 text-sm">Order ID</span>
+              <span className="text-gray-900 font-mono font-medium">#EA-77210</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-gray-500 text-sm">Delivery to</span>
+              <span className="text-gray-900 font-medium text-sm">{pickupOption === 'self' ? 'Self Pickup' : 'Agent Delivery'}</span>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="w-full space-y-4">
+            <Link href='/user/orders'>
+              <button
+                className="w-full bg-green-700 text-white py-4 rounded-full font-bold shadow-lg shadow-green-200 hover:bg-green-800 transition-all active:scale-95 flex items-center justify-center gap-3"
+                onClick={() => {
+                  // Navigate to your tracking route
+                  console.log("Navigating to track order...");
+                }}
+              >
+
+                <Truck className="w-5 h-5" />
+                Track My Order
+              </button>
+            </Link>
             <button
-              className="bg-green-700 text-white px-6 py-3 rounded-full font-semibold hover:bg-green-800 transition w-full flex justify-center items-center gap-2"
+              className="w-full bg-transparent text-gray-500 py-2 font-medium hover:text-gray-800 transition"
               onClick={() => {
-                // handle payment logic here
+                setIsSuccess(false)
+                setShowCart(false)
+                setShowCheckout(false)
+                setCart([]);
+
               }}
             >
-              <CreditCard className="w-5 h-5" /> Pay to Order
+              Back to Home
             </button>
           </div>
         </div>

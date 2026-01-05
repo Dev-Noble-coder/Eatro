@@ -71,22 +71,22 @@ const toggleAvailability = () => {
 
                                     <div className='flex items-center gap-1'>
                                         <button
-                                            className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full  hover:bg-green-600 hover:text-white text-green-600 text-xs transition w-full cursor-pointer backdrop-blur-3xl"
+                                            className="flex items-center justify-center gap-1 px-3 py-1.5 rounded-full  hover:bg-green-600 hover:text-white text-green-600 text-xs transition w-full cursor-pointer backdrop-blur-3xl"
                                             onClick={()=> {
                                                 setProductModal(true)
                                                 setSelectedProduct(meal)
                                             }}
                                         >
-                                            <PlusCircle className="w-4 h-4" /> Edit
+                                            <PlusCircle className="w-3 h-3" /> Edit
                                         </button>
                                         <button
-                                            className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-green-600 text-white text-xs transition w-full cursor-pointer"
+                                            className="flex items-center justify-center gap-1 px-3 py-1.5 rounded-full bg-green-600 text-white text-xs transition w-full cursor-pointer"
                                             onClick={() => {
                                                 setProductToDelete(meal);
                                                 setDeleteModal(true);
                                               }}
                                         >
-                                            <MinusCircle className="w-4 h-4" /> Delete
+                                            <MinusCircle className="w-3 h-3" /> Delete
                                         </button>
                                     </div>
 
