@@ -42,19 +42,133 @@ body {
   }
 }
 
-.animated-gradient {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(circle at 10% 20%, #000000 0%, #000000 25%, #000000 50%, #ff0040 75%, transparent 100%);
-  filter: blur(20px);
-  opacity: 0.7;
-  animation: gradient-move 20s ease-in-out infinite;
+  z-index: -1;
+  overflow: hidden;
+  background-color: #f8f9fa; /* Light base color */
 }
- /* #A50104 25%,  */
+
+/* Grid pattern */
+.grid-pattern {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    linear-gradient(rgba(200, 200, 200, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 200, 200, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-position: center center;
+  mask-image: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.3));
+}
+
+/* Subtle animated gradients */
+.gradient-1 {
+  position: absolute;
+  top: 20%;
+  left: 10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle at center, 
+    rgba(255, 182, 193, 0.15) 0%, 
+    rgba(173, 216, 230, 0.1) 50%, 
+    transparent 70%);
+  filter: blur(40px);
+  animation: float-1 25s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.gradient-2 {
+  position: absolute;
+  bottom: 15%;
+  right: 10%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle at center, 
+    rgba(176, 224, 230, 0.15) 0%, 
+    rgba(221, 160, 221, 0.1) 50%, 
+    transparent 70%);
+  filter: blur(50px);
+  animation: float-2 30s ease-in-out infinite;
+  opacity: 0.5;
+}
+
+.gradient-3 {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle at center, 
+    rgba(152, 251, 152, 0.1) 0%, 
+    rgba(255, 228, 196, 0.08) 50%, 
+    transparent 70%);
+  filter: blur(35px);
+  animation: float-3 20s ease-in-out infinite;
+  opacity: 0.4;
+}
+
+/* Animations */
+@keyframes float-1 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(50px, -30px) scale(1.1);
+  }
+  66% {
+    transform: translate(-40px, 20px) scale(0.9);
+  }
+}
+
+@keyframes float-2 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  33% {
+    transform: translate(-60px, 40px) scale(1.05);
+  }
+  66% {
+    transform: translate(30px, -20px) scale(0.95);
+  }
+}
+
+@keyframes float-3 {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(25px, 25px) scale(1.08);
+  }
+}
+
+/* Subtle pulsing overlay for more depth */
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.1) 50%,
+    rgba(255, 255, 255, 0.4) 100%
+  );
+  animation: pulse-overlay 15s ease-in-out infinite;
+}
+
+@keyframes pulse-overlay {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+ 
 
 
 .glass-layer {

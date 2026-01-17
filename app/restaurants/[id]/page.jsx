@@ -76,27 +76,31 @@ const page = async ({ params }) => {
 
 
   return (
-   <>
-   <AppLayout>
-      <Hero bgImage={restaurant.bgImage} route='/user'>
-        <div className='py-14 px-5 text-white'>
-          <h2 className='text-3xl font-semibold mb-3 '>
-            {restaurant.name}     
-          </h2>
-          <p className='pb-3'> Join our growing network of customers! We offer different ranges of food, we’d love to serve you...</p>
-          <p className='text-white/50 '>Place an order to Get Started !</p>
+    <>
+      <AppLayout>
+        <Hero bgImage={restaurant.bgImage} route="/user">
+        
+          <div className="py-14 px-5 text-white">
+            <h2 className="text-3xl font-semibold mb-3 ">{restaurant.name}</h2>
+            <p className="pb-3">
+              {" "}
+              Join our growing network of customers! We offer different ranges
+              of food, we’d love to serve you...
+            </p>
+            <p className="text-white/50 ">Place an order to Get Started !</p>
+          </div>
+        </Hero>
+        
+        <div className="ml-5 mt-5 mb-3">
+          <h2 className="text-xl font-semibold text-gray-900">Food</h2>
         </div>
-      </Hero>
-      <div className='ml-5 mt-5 mb-3'>
-        <h2 className='text-xl font-semibold text-gray-900'>Food</h2>
-      </div>
-      <SearchInput />
-      <Specials />
-      <Filter />
-      <Meal restaurantName={restaurant.name} />
-   </AppLayout>
-   </>
-  )
+        <SearchInput />
+        <Specials />
+        <Filter />
+        <Meal restaurantName={restaurant.name} />
+      </AppLayout>
+    </>
+  );
 }
 
 export default page

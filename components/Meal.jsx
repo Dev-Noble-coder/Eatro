@@ -106,13 +106,13 @@ const Meal = ({ restaurantName }) => {
   return (
     <div className="relative">
       {/* Grid of meals */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-5 p-5 pb-20">
+      <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 p-5 pb-20">
         {meals.map((meal) => {
           const quantity = getQuantity(meal.id);
           return (
             <div
               key={meal.id}
-              className="flex flex-col items-start justify-center bg-white/20 backdrop-blur-lg border border-white/10 rounded-2xl shadow-sm hover:shadow-md transition"
+              className="flex flex-col items-start justify-center bg-white/20 backdrop-blur-lg border border-white/10 rounded-xl shadow-sm hover:shadow-md transition"
             >
               <div className="relative w-full h-40">
                 <Image
@@ -125,28 +125,28 @@ const Meal = ({ restaurantName }) => {
               <div className="p-3 w-full">
                 <p className="font-semibold text-gray-800 text-sm">{meal.name}</p>
                 <p className="text-xs text-gray-600 mb-2">
-                  ₦{meal.price.toLocaleString()}
+                  ₦{meal.price.toLocaleString()} / spoon
                 </p>
 
                 {quantity === 0 ? (
                   <button
                     onClick={() => addToCart(meal)}
-                    className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-green-600 hover:bg-green-700 text-white text-xs transition w-full "
+                    className="flex items-center justify-center gap-2 px-3 py-1.5 rounded-full bg-blue-600 hover:bg-blue-700/60 text-white text-xs transition w-full "
                   >
                     <PlusCircle className="w-4 h-4" /> Add to Cart
                   </button>
                 ) : (
-                  <div className="flex items-center justify-between w-full bg-green-100 rounded-full px-3 py-1">
+                  <div className="flex items-center justify-between w-full bg-blue-300/70 rounded-full px-3 py-1">
                     <button
                       onClick={() => removeFromCart(meal.id)}
-                      className="text-green-700"
+                      className="text-blue-700"
                     >
                       <MinusCircle className="w-4 h-4" />
                     </button>
-                    <span className="text-sm font-semibold text-green-800">{quantity}</span>
+                    <span className="text-sm font-semibold text-white">{quantity}</span>
                     <button
                       onClick={() => addToCart(meal)}
-                      className="text-green-700"
+                      className="text-blue-700"
                     >
                       <PlusCircle className="w-4 h-4" />
                     </button>
@@ -160,7 +160,7 @@ const Meal = ({ restaurantName }) => {
 
       {/* Bottom Cart Overlay */}
       {!showCart && cart.length > 0 && (
-        <div className="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-green-600/20 backdrop-blur-2xl text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-between w-[86%] ">
+        <div className="fixed bottom-62 left-1/2 transform -translate-x-1/2 bg-blue-600/30 backdrop-blur-2xl text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-between w-[86%] z-90">
           <span className="font-semibold text-sm">
             Total: ₦{total.toLocaleString()}
           </span>

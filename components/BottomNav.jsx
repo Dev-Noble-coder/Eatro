@@ -11,7 +11,7 @@ export default function BottomNav() {
     const pathname = usePathname();
 
     const navItems = [
-        { id: "home", icon: Home, label: "Home", to: "/user/home_dashboard" },
+        { id: "home", icon: Home, label: "Home", to: "/" },
         { id: "orders", icon: ShoppingBag, label: "Orders", to: "/user/orders" },
         { id: "delivery", icon: Truck, label: "Delivery", to: "/user/delivery" },
         { id: "settings", icon: Settings, label: "Settings", to: "/user/settings" },
@@ -19,7 +19,7 @@ export default function BottomNav() {
     
       return (
         <nav className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-40">
-          <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+          <div className="rounded-full bg-black/40 backdrop-blur-lg border border-black/20">
             <div className="flex items-center px-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -30,8 +30,8 @@ export default function BottomNav() {
                     <button
                       className={`flex flex-col items-center transition-all duration-300 px-6.5 cursor-pointer py-2 ${
                         isActive
-                          ? "text-white/90 bg-[#A31621]/40 rounded-4xl my-1"
-                          : "text-white/70 hover:text-white"
+                          ? "text-white/90 bg-blue-400/80 rounded-4xl my-1"
+                          : "text-white hover:text-white"
                       }`}
                     >
                       <Icon
