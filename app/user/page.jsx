@@ -1,8 +1,8 @@
 import React from 'react'
-import AppLayout from '../layout/AppLayout'
-import SwiperCard from '../layout/SwiperCard'
-import RestaurantCard from '../layout/RestaurantCard'
-import PartnerCard from '../layout/PartnerCard'
+import AppLayout from '@/app/user/layout/AppLayout'
+import SwiperCard from "@/app/user/layout/SwiperCard";
+import RestaurantCard from "@/app/user/layout/RestaurantCard";
+import PartnerCard from "@/app/user/layout/PartnerCard";
 
 const page = () => {
   return (

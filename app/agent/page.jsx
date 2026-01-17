@@ -1,7 +1,7 @@
 import React from 'react'
-import AppLayout from '../layout/AppLayout'
-import AcctBalance from '../layout/AcctBalance'
-import TopOrders from '../layout/TopOrders'
+import AppLayout from "@/app/agent/layout/AppLayout";
+import AcctBalance from "@/app/agent/layout/AcctBalance";
+import TopOrders from "@/app/agent/layout/TopOrders";
 
 const page = () => {
     return (

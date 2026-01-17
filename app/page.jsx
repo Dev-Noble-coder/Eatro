@@ -25,7 +25,7 @@ export default function Home() {
     const timer = setTimeout(() => {
       setLoading(false)
       window.location.href = '/auth/signup'    
-    }, 3000) // Show onboarding for 3 seconds
+    }, 3000) 
 
     return () => clearTimeout(timer)
   }, [])
