@@ -59,62 +59,68 @@ const RestaurantCard = () => {
       </h1>
       <div className="mb-6">
         {restaurants.map((r) => (
-          <Link key={r.id} href={`/user/restaurants/${r.id}`}>
-          <GlassBG
-            className="flex items-center gap-4 transition mb-2 rounded-xl "
+          <Link
+            key={r.id}
+            href={`/user/restaurants/${r.id}`}
+            className=" bg-red-400/20 border border-red-400"
           >
-            <img
-              src={r.image}
-              alt={r.name}
-              className="w-24 h-24 object-cover rounded-l-xl"
-            />
-            <div className="flex flex-col flex-1">
-              <h2 className="text-lg font-semibold text-[#A31621]">{r.name}</h2>
-              <p className="text-white text-sm pb-3">Get your best meal yet !</p>
-              <div className="flex gap-5">
-                <div className="flex items-center gap-1 ">
-                  <img
-                    src={r.image}
-                    alt={r.name}
-                    className="w-5 h-5 object-cover rounded-sm"
-                  />{" "}
-                  <div>
-                                 <p className="text-[10px] text-white">{r.cuisine1}</p>
-                    <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
-                      Available
-                    </p>
+            <GlassBG className="flex items-center gap-4 transition mb-2 rounded-xl bg-red-400/20">
+              <img
+                src={r.image}
+                alt={r.name}
+                className="w-24 h-24 object-cover rounded-l-xl"
+              />
+              <div className="flex flex-col flex-1">
+                <h2 className="text-lg font-semibold text-white">
+                  {r.name}
+                </h2>
+                <p className="text-white text-sm pb-3">
+                  Get your best meal yet !
+                </p>
+                <div className="flex gap-5">
+                  <div className="flex items-center gap-1 ">
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      className="w-5 h-5 object-cover rounded-sm"
+                    />{" "}
+                    <div>
+                      <p className="text-[10px] text-white">{r.cuisine1}</p>
+                      <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
+                        Available
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-1 ">
-                  <img
-                    src={r.image}
-                    alt={r.name}
-                    className="w-5 h-5 object-cover rounded-sm"
-                  />{" "}
-                  <div>
-                    <p className="text-[10px] text-white">{r.cuisine2}</p>
-                    <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
-                      Available
-                    </p>
+                  <div className="flex items-center gap-1 ">
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      className="w-5 h-5 object-cover rounded-sm"
+                    />{" "}
+                    <div>
+                      <p className="text-[10px] text-white">{r.cuisine2}</p>
+                      <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
+                        Available
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className="flex items-center gap-1 ">
-                  <img
-                    src={r.image}
-                    alt={r.name}
-                    className="h-5 w-5 object-cover rounded-sm"
-                  />{" "}
-                  <div>
-                    <p className="text-[10px] text-white">{r.cuisine3}</p>
-                    <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
-                      Available
-                    </p>
+                  <div className="flex items-center gap-1 ">
+                    <img
+                      src={r.image}
+                      alt={r.name}
+                      className="h-5 w-5 object-cover rounded-sm"
+                    />{" "}
+                    <div>
+                      <p className="text-[10px] text-white">{r.cuisine3}</p>
+                      <p className="text-[7px] bg-green-300/40 rounded-full text-gray-800/70 p-0.5 text-center">
+                        Available
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <ChevronRight size={27} className="text-white pr-2"/>
-          </GlassBG>
+              <ChevronRight size={27} className="text-white pr-2" />
+            </GlassBG>
           </Link>
         ))}
       </div>

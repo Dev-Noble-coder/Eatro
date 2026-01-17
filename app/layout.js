@@ -2,14 +2,23 @@
 import "./globals.css";
 import LoadingProvider from "@/components/LoadingProvider";
 
-// const geistSans = Geist({
-//   variable: "--font-geist-sans",
-//   subsets: ["latin"],
-// });
+import localFont from "next/font/local";
 
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
+const degular = localFont({
+  src: [
+    {
+      path: "../public/fonts/DegularDemo-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/DegularDemo-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-degular",
+});
 // });
 
 export const metadata = {
@@ -20,12 +29,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        // className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <LoadingProvider>
-        {children}
-        </LoadingProvider>
+      <body className={`${degular.className} antialiased`}>
+        <LoadingProvider>{children}</LoadingProvider>
       </body>
     </html>
   );

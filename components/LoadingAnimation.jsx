@@ -78,7 +78,7 @@ const LoadingAnimation = () => {
         className="text-[#A31621] text-4xl tracking-wide font-semibold"
 
       >
-        EAT<span className='text-[#FCF7F8]'>RO</span>
+        BUY<span className='text-[#FCF7F8]'>CHOW</span>
       </h1>
     </div>
   )
