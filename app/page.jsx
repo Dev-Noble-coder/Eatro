@@ -2,19 +2,10 @@
 
 import { useState, useEffect } from "react";
 import LoadingAnimation from "@/components/LoadingAnimation";
-import Logo from "@/components/Logo";
-import {
-  User,
-  Mail,
-  Lock,
-  GraduationCap,
-  BookOpen,
-  Eye,
-  EyeOff,
-} from "lucide-react";
-import Link from "next/link";
-import Login from "./auth/login/page";
-import SignUp from "./auth/signup/page";
+import AppLayout from "@/components/AppLayout";
+import SwiperCard from "@/components/SwiperCard";
+import RestaurantCard from "@/components/RestaurantCard";
+import PartnerCard from "@/components/PartnerCard";
 
 
 export default function Home() {
@@ -24,7 +15,6 @@ export default function Home() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false)
-      window.location.href = '/auth/signup'    
     }, 3000) 
 
     return () => clearTimeout(timer)
@@ -35,7 +25,13 @@ export default function Home() {
   }
   return (
     <>
-      
+      <>
+        <AppLayout>
+          <SwiperCard />
+          <RestaurantCard />
+          <PartnerCard />
+        </AppLayout>
+      </>
     </>
   );
 }
