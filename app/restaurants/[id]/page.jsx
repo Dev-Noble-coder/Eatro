@@ -1,10 +1,10 @@
 import React from 'react'
-import AppLayout from '../../layout/AppLayout';
-import Hero from '../components/Hero';
-import SearchInput from '../components/SearchInput';
-import Specials from '../components/Specials';
-import Filter from '../components/Filter';
-import Meal from '../components/Meal';
+import AppLayout from '@/components/AppLayout';
+import Hero from '@/components/Hero';
+import SearchInput from '@/components/SearchInput';
+import Specials from '@/components/Specials';
+import Filter from '@/components/Filter';
+import Meal from '@/components/Meal';
 
 
 const page = async ({ params }) => {
@@ -78,7 +78,7 @@ const page = async ({ params }) => {
   return (
    <>
    <AppLayout>
-      <Hero bgImage={restaurant.bgImage} route='/user/home_dashboard'>
+      <Hero bgImage={restaurant.bgImage} route='/user'>
         <div className='py-14 px-5 text-white'>
           <h2 className='text-3xl font-semibold mb-3 '>
             {restaurant.name}     

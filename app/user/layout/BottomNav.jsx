@@ -11,10 +11,10 @@ export default function BottomNav() {
     const pathname = usePathname();
 
     const navItems = [
-        { id: "home", icon: Home, label: "Home", to: "/user/home_dashboard" },
-        { id: "orders", icon: ShoppingBag, label: "Orders", to: "/user/orders" },
-        { id: "delivery", icon: Truck, label: "Delivery", to: "/user/delivery" },
-        { id: "settings", icon: Settings, label: "Settings", to: "/user/settings" },
+        { id: "home", icon: Home, label: "Home", to: "/" },
+        { id: "orders", icon: ShoppingBag, label: "Orders", to: "/orders" },
+        { id: "delivery", icon: Truck, label: "Delivery", to: "/delivery" },
+        { id: "settings", icon: Settings, label: "Settings", to: "/settings" },
       ];
     
       return (

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import GlassBG from "../../layout/GlassBG";
+import GlassBG from "@/components//GlassBG";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Navigation, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -11,14 +11,14 @@ import "swiper/css/navigation";
 
 
 // Import your food images
-import food1 from "../../../../public/img/food1.png";
-import food2 from "../../../../public/img/food2.png";
-import food3 from "../../../../public/img/food3.png";
-import food4 from "../../../../public/img/food4.png";
-import food5 from "../../../../public/img/food5.png";
-import food6 from "../../../../public/img/food6.png";
-import food7 from "../../../../public/img/food7.png";
-import food8 from "../../../../public/img/food8.png";
+import food1 from "../public/img/food1.png";
+import food2 from "../public/img/food2.png";
+import food3 from "../public/img/food3.png";
+import food4 from "../public/img/food4.png";
+import food5 from "../public/img/food5.png";
+import food6 from "../public/img/food6.png";
+import food7 from "../public/img/food7.png";
+import food8 from "../public/img/food8.png";
 
 const foods = [
   { image: food1, name: "Pizza" },
