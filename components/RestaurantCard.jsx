@@ -93,9 +93,7 @@ const RestaurantCard = () => {
             <h1 className="text-2xl font-medium mb-1 bg-gradient-to-r from-blue-600 to-cyan-500 bg-clip-text text-transparent">
               Top Restaurants
             </h1>
-            <p className="text-sm text-blue-400/80">
-              Near you
-            </p>
+            <p className="text-sm text-blue-400/80">Near you</p>
           </div>
           {/* <div className="flex items-center gap-2 text-blue-500">
             <span className="text-sm font-medium">View All</span>
@@ -123,7 +121,6 @@ const RestaurantCard = () => {
                       className={`w-20 h-20 object-cover transition-transform duration-300 group-hover:scale-110 rounded-full
                       }`}
                     />
-                  
                   </div>
 
                   {/* Restaurant details */}
@@ -153,35 +150,17 @@ const RestaurantCard = () => {
                     {/* Cuisine tags - varying sizes */}
                     <div className="flex flex-wrap gap-2">
                       <div
-                        className={`px-3 py-1 rounded-full bg-blue-100/50 text-blue-700 text-xs font-medium ${
-                          r.id % 3 === 0
-                            ? "text-xs"
-                            : r.id % 3 === 1
-                              ? "text-sm"
-                              : "text-xs font-semibold"
-                        }`}
+                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium `}
                       >
                         {r.cuisine1}
                       </div>
                       <div
-                        className={`px-3 py-1 rounded-full bg-cyan-100/50 text-cyan-700 text-xs font-medium ${
-                          r.id % 3 === 1
-                            ? "text-sm"
-                            : r.id % 3 === 2
-                              ? "text-xs"
-                              : "text-xs font-semibold"
-                        }`}
+                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium`}
                       >
                         {r.cuisine2}
                       </div>
                       <div
-                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium ${
-                          r.id % 3 === 2
-                            ? "text-sm"
-                            : r.id % 3 === 0
-                              ? "text-xs"
-                              : "text-xs font-semibold"
-                        }`}
+                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium`}
                       >
                         {r.cuisine3}
                       </div>

@@ -50,7 +50,7 @@ body {
   height: 100%;
   z-index: -1;
   overflow: hidden;
-  background-color: #f8f9fa; /* Light base color */
+  background-color: #f8f9fa; 
 }
 
 /* Grid pattern */
