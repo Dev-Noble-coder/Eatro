@@ -1,71 +1,39 @@
-import React from "react";
+"use client";
+
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import GlassBG from "./GlassBG";
 import { Star, ChevronRight, MapPin, Clock } from "lucide-react";
 import Link from "next/link";
 
 const RestaurantCard = () => {
-  const restaurants = [
-    {
-      id: 1,
-      name: "Lacuisine",
-      image:
-        "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80",
-      rating: 4.8,
-      deliveryTime: "15-25 min",
-      distance: "1.2 km",
-      cuisine1: "Rice",
-      cuisine2: "Beans",
-      cuisine3: "Spaghetti",
-    },
-    {
-      id: 2,
-      name: "Sir K",
-      image:
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80",
-      rating: 4.5,
-      deliveryTime: "20-30 min",
-      distance: "2.1 km",
-      cuisine1: "Rice",
-      cuisine2: "Beans",
-      cuisine3: "Spaghetti",
-    },
-    {
-      id: 3,
-      name: "Joked",
-      image:
-        "https://images.unsplash.com/photo-1553621042-f6e147245754?w=800&q=80",
-      rating: 4.9,
-      deliveryTime: "10-20 min",
-      distance: "0.8 km",
-      cuisine1: "Rice",
-      cuisine2: "Beans",
-      cuisine3: "Spaghetti",
-    },
-    {
-      id: 4,
-      name: "Bite and Smile",
-      image:
-        "https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=800&q=80",
-      rating: 4.3,
-      deliveryTime: "25-35 min",
-      distance: "3.5 km",
-      cuisine1: "Rice",
-      cuisine2: "Beans",
-      cuisine3: "Spaghetti",
-    },
-    {
-      id: 5,
-      name: "Green Garden",
-      image:
-        "https://images.unsplash.com/photo-1551218808-94e220e084d2?w=800&q=80",
-      rating: 4.7,
-      deliveryTime: "15-25 min",
-      distance: "1.8 km",
-      cuisine1: "Rice",
-      cuisine2: "Beans",
-      cuisine3: "Spaghetti",
-    },
-  ];
+  const [restaurants, setRestaurants] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchRestaurants = async () => {
+      try {
+        setLoading(true);
+        const response = await fetch("/api/admin/restaurants");
+        const data = await response.json();
+
+        if (data.success) {
+          setRestaurants(data.restaurants);
+          console.log(data.restaurants);
+        } else {
+          setError("Failed to fetch restaurants");
+        }
+      } catch (err) {
+        console.error("Error fetching restaurants:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchRestaurants();
+  }, []);
 
   return (
     <div className="relative px-5 py-8">
@@ -102,88 +70,118 @@ const RestaurantCard = () => {
         </div>
 
         <div className="space-y-4">
-          {restaurants.map((r) => (
-            <Link
-              key={r.id}
-              href={`/restaurants/${r.id}`}
-              className="block group"
-            >
-              <GlassBG className="relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg shadow-sm border border-blue-200/70 bg-blue-200/10 backdrop-blur-sm rounded-2xl">
-                {/* Restaurant info */}
-                <div className="flex items-start gap-4 p-4">
-                  {/* Restaurant image with subtle shape variation */}
-                  <div
-                    className={`relative rounded-2xl overflow-hidden flex-shrink-0`}
-                  >
-                    <img
-                      src={r.image}
-                      alt={r.name}
-                      className={`w-20 h-20 object-cover transition-transform duration-300 group-hover:scale-110 rounded-full
-                      }`}
-                    />
-                  </div>
-
-                  {/* Restaurant details */}
-                  <div className="flex-1 min-w-0">
-                    <div className="flex items-start justify-between mb-2">
-                      <h2 className="text-lg font-semibold text-blue-900 truncate">
-                        {r.name}
-                      </h2>
-                      <ChevronRight
-                        size={20}
-                        className="text-blue-400 group-hover:text-blue-600 transition-colors flex-shrink-0 ml-2"
+          {loading ? (
+            <div className="flex items-center justify-center py-12">
+              <p className="text-blue-400">Loading restaurants...</p>
+            </div>
+          ) : error ? (
+            <div className="flex items-center justify-center py-12">
+              <p className="text-red-400">Error: {error}</p>
+            </div>
+          ) : restaurants.length === 0 ? (
+            <div className="flex items-center justify-center py-12">
+              <p className="text-blue-400">No restaurants available</p>
+            </div>
+          ) : (
+            restaurants.map((r) => (
+              <Link
+                key={r._id}
+                href={`/restaurants/${r._id}`}
+                className="block group"
+              >
+                <GlassBG className="relative overflow-hidden transition-all duration-300 hover:scale-[1.02] hover:shadow-lg shadow-sm border border-blue-200/70 bg-blue-200/10 backdrop-blur-sm rounded-2xl">
+                  {/* Restaurant info */}
+                  <div className="flex items-start gap-4 p-4">
+                    {/* Restaurant image with subtle shape variation */}
+                    <div
+                      className={`relative rounded-2xl overflow-hidden flex-shrink-0 w-20 h-20`}
+                    >
+                      <Image
+                        src={r.image}
+                        alt={r.name}
+                        width={80}
+                        height={80}
+                        className={`w-20 h-20 object-cover transition-transform duration-300 group-hover:scale-110 rounded-full`}
                       />
                     </div>
 
-                    {/* Stats */}
-                    <div className="flex items-center gap-4 mb-3">
-                      <div className="flex items-center gap-1 text-sm text-blue-600/80">
-                        <Clock size={14} />
-                        <span>{r.deliveryTime}</span>
-                      </div>
-                      <div className="flex items-center gap-1 text-sm text-blue-600/80">
-                        <MapPin size={14} />
-                        <span>{r.distance}</span>
-                      </div>
-                    </div>
+                    {/* Restaurant details */}
+                    <div className="flex-1 min-w-0">
+                      {/* Description */}
+                      {/* {r.description && (
+                        <p className="text-sm text-blue-600/70 mb-3 line-clamp-1">
+                          {r.description}
+                        </p>
+                      )} */}
 
-                    {/* Cuisine tags - varying sizes */}
-                    <div className="flex flex-wrap gap-2">
-                      <div
-                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium `}
-                      >
-                        {r.cuisine1}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-start justify-between mb-2">
+                          <h2 className="text-lg font-semibold text-blue-900 truncate">
+                            {r.name}
+                          </h2>
+                          <ChevronRight
+                            size={20}
+                            className="text-blue-400 group-hover:text-blue-600 transition-colors flex-shrink-0 ml-2"
+                          />
+                        </div>
+
+                        {/* Stats */}
+                        <div className="flex items-center gap-4 mb-3">
+                          <div className="flex items-center gap-1 text-sm text-blue-600/80">
+                            <Clock size={14} />
+                            <span>{r.deliveryTime}</span>
+                          </div>
+                          <div className="flex items-center gap-1 text-sm text-blue-600/80">
+                            <MapPin size={14} />
+                            <span>{r.distance}</span>
+                          </div>
+                        </div>
+
+                        {/* Cuisine tags - varying sizes */}
+                        <div className="flex flex-wrap gap-2">
+                          {r.availableFoods
+                            .filter((c) => c.isAvailable)
+                            .slice(0, 3)
+                            .map((c) => (
+                              <div
+                                key={c._id}
+                                className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium`}
+                              >
+                                {c.foodId.name}
+                              </div>
+                            ))}
+                        </div>
                       </div>
-                      <div
-                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium`}
-                      >
-                        {r.cuisine2}
-                      </div>
-                      <div
-                        className={`px-3 py-1 rounded-full bg-blue-200/50 text-blue-800 text-xs font-medium`}
-                      >
-                        {r.cuisine3}
+
+                      {/* Location and Contact */}
+                      <div className="flex items-center gap-4 mb-3">
+                        {r.location && (
+                          <div className="flex items-center gap-1 text-sm text-blue-600/80">
+                            <MapPin size={14} />
+                            <span>{r.location}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Subtle grid pattern overlay for card */}
-                <div
-                  className="absolute inset-0 pointer-events-none opacity-5"
-                  style={{
-                    backgroundImage: `linear-gradient(to right, #3b82f6 1px, transparent 1px),
-                                     linear-gradient(to bottom, #3b82f6 1px, transparent 1px)`,
-                    backgroundSize: "20px 20px",
-                  }}
-                />
-              </GlassBG>
-            </Link>
-          ))}
+                  {/* Subtle grid pattern overlay for card */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-5"
+                    style={{
+                      backgroundImage: `linear-gradient(to right, #3b82f6 1px, transparent 1px),
+                                       linear-gradient(to bottom, #3b82f6 1px, transparent 1px)`,
+                      backgroundSize: "20px 20px",
+                    }}
+                  />
+                </GlassBG>
+              </Link>
+            ))
+          )}
         </div>
 
         {/* Decorative elements */}
-        <div className="flex justify-center mt-8">
+        {/* <div className="flex justify-center mt-8">
           <div className="flex gap-2">
             {[...Array(5)].map((_, i) => (
               <div
@@ -202,7 +200,7 @@ const RestaurantCard = () => {
               />
             ))}
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   );

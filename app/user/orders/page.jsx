@@ -1,6 +1,6 @@
 import React from 'react'
-import AppLayout from '../layout/AppLayout'
-import Orders from '../layout/Orders'
+import AppLayout from '../../../components/AppLayout'
+import Orders from '../../../components/Orders'
 
 const page = () => {
   return (

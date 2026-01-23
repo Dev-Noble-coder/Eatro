@@ -1,5 +1,5 @@
 import React from "react";
-import GlassBG from "@/components/GlassBG";
+import GlassBG from "./GlassBG";
 import {
   Utensils,
   CheckCircle,

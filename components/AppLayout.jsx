@@ -6,17 +6,16 @@ const AppLayout = ({ children }) => {
     return (
       <div className="min-h-screen bg-neutral-300  overflow-hidden relative text-black ">
         <div className="absolute inset-0 flex items-center justify-center">
-          <div class="animated-bg">
-            <div class="grid-pattern"></div>
-            <div class="gradient-1"></div>
-            <div class="gradient-2"></div>
-            <div class="gradient-3"></div>
-            <div class="overlay"></div>
+          <div className="animated-bg">
+            <div className="grid-pattern"></div>
+            <div className="gradient-1"></div>
+            <div className="gradient-2"></div>
+            <div className="gradient-3"></div>
+            <div className="overlay"></div>
           </div>
         </div>
         <div className="glass-layer absolute inset-0"></div>
         <div className="relative  pb-[calc(6rem+env(safe-area-inset-bottom))">
-          <Header />
           {children}
         </div>
         <BottomNav />

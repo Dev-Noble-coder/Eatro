@@ -1,6 +1,6 @@
 import React from 'react'
-import AppLayout from '../layout/AppLayout'
-import Settings from '../layout/Settings'
+import AppLayout from "../../../components/AppLayout";
+import Settings from "../../../components/Settings";
 
 const page = () => {
   return (

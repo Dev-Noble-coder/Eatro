@@ -1,5 +1,5 @@
 import React from 'react'
-import GlassBG from '@/components/GlassBG'
+import GlassBG from './GlassBG'
 import { Search } from 'lucide-react'
 
 const SearchInput = () => {

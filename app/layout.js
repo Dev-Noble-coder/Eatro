@@ -1,6 +1,7 @@
 // import { Geist, Geist_Mono } from "next/font/google";
+import Header from "../components/Header";
 import "./globals.css";
-import LoadingProvider from "@/components/LoadingProvider";
+// import LoadingProvider from "@/components/LoadingProvider";
 
 import localFont from "next/font/local";
 
@@ -29,8 +30,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${degular.className} antialiased`}>
-        <LoadingProvider>{children}</LoadingProvider>
+      <body className={`${degular.className} antialiased overflow-x-hidden`}>
+        <Header />
+
+        {/* <LoadingProvider> */}
+          {children}
+        {/* </LoadingProvider> */}
       </body>
     </html>
   );

@@ -13,7 +13,6 @@ export default function BottomNav() {
     const navItems = [
         { id: "home", icon: Home, label: "Home", to: "/" },
         { id: "orders", icon: ShoppingBag, label: "Orders", to: "/user/orders" },
-        { id: "delivery", icon: Truck, label: "Delivery", to: "/user/delivery" },
         { id: "settings", icon: Settings, label: "Settings", to: "/user/settings" },
       ];
     
@@ -30,7 +29,7 @@ export default function BottomNav() {
                     <button
                       className={`flex flex-col items-center transition-all duration-300 px-6.5 cursor-pointer py-2 ${
                         isActive
-                          ? "text-white/90 bg-blue-400/80 rounded-4xl my-1"
+                          ? "text-white/90 bg-blue-700 rounded-4xl my-1"
                           : "text-white hover:text-white"
                       }`}
                     >

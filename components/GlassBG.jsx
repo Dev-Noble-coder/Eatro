@@ -1,8 +1,8 @@
 import React from 'react'
 
-const GlassBG = ({children, className = ""}) => {
+const GlassBG = ({children, className = "", ...props}) => {
   return (
-    <div className={`backdrop-blur-xl ${className} `}>
+    <div {...props} className={`backdrop-blur-xl ${className} `}>
         {children}
     </div>
   )

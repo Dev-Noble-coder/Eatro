@@ -1,6 +1,6 @@
 "use client"
 
-import { Home, ShoppingBag, Package, Settings } from 'lucide-react';
+import { Home, ShoppingBag, Package, Settings, PanelTopClose } from 'lucide-react';
 import { useState } from 'react';
 import GlassBG from './GlassBG';
 import Link from 'next/link';
@@ -11,15 +11,27 @@ export default function BottomNav() {
     const pathname = usePathname();
 
     const navItems = [
-        { id: "home", icon: Home, label: "Home", to: "/admin" },
-        { id: "orders", icon: ShoppingBag, label: "Orders", to: "/admin/orders" },
-        { id: "products", icon: Package, label: "Products", to: "/admin/products" },
-        { id: "settings", icon: Settings, label: "Settings", to: "/admin/settings" },
-      ];
+      { id: "home", icon: Home, label: "Home", to: "/admin" },
+      { id: "orders", icon: ShoppingBag, label: "Orders", to: "/admin/orders" },
+      { id: "agents", icon: PanelTopClose, label: "Agents", to: "/admin/agents" },
+
+      {
+        id: "products",
+        icon: Package,
+        label: "Products",
+        to: "/admin/products",
+      },
+      {
+        id: "settings",
+        icon: Settings,
+        label: "Settings",
+        to: "/admin/settings",
+      },
+    ];
     
       return (
         <nav className="fixed bottom-5 left-1/2 transform -translate-x-1/2 z-40">
-          <div className="rounded-full bg-white/10 backdrop-blur-sm border border-white/20">
+          <div className="rounded-full bg-black/40 backdrop-blur-sm border border-white/20">
             <div className="flex items-center px-1">
               {navItems.map((item) => {
                 const Icon = item.icon;
@@ -30,7 +42,7 @@ export default function BottomNav() {
                     <button
                       className={`flex flex-col items-center transition-all duration-300 px-6.5 cursor-pointer py-2 ${
                         isActive
-                          ? "text-white/90 bg-[#A31621]/40 rounded-4xl my-1"
+                          ? "text-white/90 bg-blue-700 rounded-4xl my-1"
                           : "text-white/70 hover:text-white"
                       }`}
                     >
